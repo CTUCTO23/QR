@@ -1,0 +1,54 @@
+package test04;
+
+public class CutImage {
+	
+	
+	public static void main(String[] args) {
+		try {
+				
+			//Provide number of rows and column
+			int row = 4;
+			int col = 3;
+			
+			BufferedImage originalImgage = ImageIO.read(new File("C:/Users/OCAD/Desktop/IMG_0401.JPG"));
+			
+			//total width and total height of an image
+			int tWidth = originalImgage.getWidth();
+			int tHeight = originalImgage.getHeight();
+
+			System.out.println("Image Dimension: " + tWidth + "x" + tHeight);
+			
+			//width and height of each piece
+			int eWidth = tWidth / col;
+			int eHeight = tHeight / row;
+
+			int x = 0;
+			int y = 0;
+
+			for (int i = 0; i < row; i++) {
+				y = 0;
+				for (int j = 0; j < col; j++) {
+					try {
+						System.out.println("creating piece: "+i+" "+j);
+						
+						BufferedImage SubImgage = originalImgage.getSubimage(y, x, eWidth, eHeight);
+						File outputfile = new File("C:/Users/OCAD/Desktop/IMG_0401"+i+j+".JPG");
+						ImageIO.write(SubImgage, "", outputfile);
+						
+						y += eWidth;
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+
+				x += eHeight;
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		}
+
+}

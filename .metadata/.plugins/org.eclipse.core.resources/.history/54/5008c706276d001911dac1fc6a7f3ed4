@@ -1,0 +1,72 @@
+package test04;
+
+import com.asprise.ocr.Ocr
+
+
+import javax.imageio.ImageIO;
+public class CutImage {
+	
+	String s = ocr.recognize("C:/test.png", -1, 0, 0, 400, 200, Ocr.RECOGNIZE_TYPE_TEXT, Ocr.OUTPUT_FORMAT_PLAINTEXT);
+
+	
+	
+/**	
+	public static void main(String[] args) {
+		try {
+				
+			
+			
+			//Provide number of rows and column
+			int row = 4;
+			int col = 3;
+			
+			BufferedImage originalImgage = ImageIO.read(new File("C:/Users/OCAD/Desktop/IMG_0401.JPG"));
+			
+			//total width and total height of an image
+			int tWidth = originalImgage.getWidth();
+			int tHeight = originalImgage.getHeight();
+
+			System.out.println("Image Dimension: " + tWidth + "x" + tHeight);
+			
+			//width and height of each piece
+			int eWidth = tWidth / col;
+			int eHeight = tHeight / row;
+
+			int x = 0;
+			int y = 0;
+
+			String code ="22155G";
+			BufferedImage SubImgagex = originalImgage.getSubimage(1000,2000, 200, 300);
+			File outputfilex = new File("C:/test/"+code+".JPG");
+			ImageIO.write(SubImgagex, "jpg", outputfilex);
+			
+			
+			
+		
+			for (int i = 0; i < row; i++) {
+				y = 0;
+				for (int j = 0; j < col; j++) {
+					try {
+						System.out.println("creating piece: "+i+" "+j);
+						
+						BufferedImage SubImgage = originalImgage.getSubimage(y, x, eWidth, eHeight);
+						File outputfile = new File("C:/test/im"+i+j+".JPG");
+						ImageIO.write(SubImgage, "jpg", outputfile);
+						
+						y += eWidth;
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+
+				x += eHeight;
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		}
+**/
+}
