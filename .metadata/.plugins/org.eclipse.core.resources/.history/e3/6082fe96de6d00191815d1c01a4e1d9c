@@ -1,0 +1,160 @@
+package test04;
+
+
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.FileImageOutputStream;
+
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.ChecksumException;
+import com.google.zxing.FormatException;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Reader;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+
+public class Cut {
+	
+
+	private static BufferedImage principal;
+
+	private static int width,height;
+	private static Image parte1, parte2,parte3,parte4,parte5,parte6,parte7,parte8;
+	private static String qr1,qr2,qr3,qr4,qr5,qr6,qr7,qr8;
+
+	
+
+	  private static String readQR(String pathname, int i) throws FormatException, ChecksumException, NotFoundException, IOException {
+	    	
+	    	
+	        InputStream qrInputStream = new FileInputStream(pathname);
+	        BufferedImage qrBufferedImage = ImageIO.read(qrInputStream);
+	        
+	    //    parte1 =(BufferedImage) qrBufferedImage.getSubimage(3620,1990,1500,2100);
+	        
+	        switch (i) {
+			case 1:
+				LuminanceSource source = new BufferedImageLuminanceSource( qrBufferedImage.getSubimage(3620,1990,1500,2100));
+			       BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+			        Reader reader = new MultiFormatReader();
+			        Result stringBarCode = reader.decode(bitmap);
+				  return stringBarCode.getText();
+				
+			default:
+			
+			return "error";
+			
+			}
+			
+	       
+	       
+	    }
+
+	public static void main(String[] args) {
+
+    try {
+    	
+    		BufferedImage originalImgage = ImageIO.read(new File("C:/Users/OCAD/Desktop/Scan0001.jpg"));
+    		
+    		int tWidth = originalImgage.getWidth();
+    		int tHeight = originalImgage.getHeight();
+
+    		System.out.println("Image Dimension: " + tWidth + "x" + tHeight);
+    		
+    	
+    		
+    		  String pathname = "C:/Users/OCAD/Desktop/Scan0001.jpg";
+    		 // String text = readQR(pathname,1);
+    		  String text="adsasddsa";
+              System.out.print(text);
+              
+	int code= 1234;
+	int ad= 5678;
+	int bd= 4792;
+	int cd= 4794;
+	int dd= 4795;
+	int ed= 4790;
+	int fd= 4791;
+	
+	
+	/*
+	File asdasdsad = new File("C:/test/"+"nico"+".jpg");
+	FileImageOutputStream output = new FileImageOutputStream(asdasdsad);
+	
+	ImageWriter writer = ImageIO.getImageWritersByFormatName("jpeg").next();
+	writer.setOutput(output);
+	ImageWriteParam param = writer.getDefaultWriteParam();
+	param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT); // Needed see javadoc 
+	param.setCompressionQuality(1.0F); // Highest quality
+	writer.write(originalImgage.getSubimage(3620,1990,1500,2100));
+	*/
+	
+	parte1 =(BufferedImage) originalImgage.getSubimage(1790,1990,1500,2100);
+	File asdasdasd = new File("C:/test/"+"nicopp"+".jpg");
+	ImageIO.write((RenderedImage) parte1, "jpg", asdasdasd);
+	
+	
+	
+			//String cod1 = readQR(pathname,1);
+			parte1 =(BufferedImage) originalImgage.getSubimage(3620,1990,1500,2100);
+			File outputfilex = new File("C:/test/"+text+".jpg");
+			ImageIO.write((RenderedImage) parte1, "jpg", outputfilex);
+	
+			parte2 =(BufferedImage) originalImgage.getSubimage(3620,4990,1500,2100);
+			File dos = new File("C:/test/"+code+".jpg");
+			ImageIO.write((RenderedImage) parte2, "jpg", dos);
+			  System.out.print(code);
+
+            parte3 =(BufferedImage) originalImgage.getSubimage(3620,7990,1500,2100);
+			File tres = new File("C:/test/"+ad+".jpg");
+			ImageIO.write((RenderedImage) parte3, "jpg", tres);
+			  System.out.print(ad);
+			
+			parte4 =(BufferedImage) originalImgage.getSubimage(3620,10890,1500,2100);
+			File cuatro = new File("C:/test/"+bd+".jpg");
+		    ImageIO.write((RenderedImage) parte4, "jpg", cuatro);
+			  System.out.print(bd);
+				
+			parte5 =(BufferedImage) originalImgage.getSubimage(8050,1990,1500,2100);
+			File cinco = new File("C:/test/"+cd+".jpg");
+			ImageIO.write((RenderedImage) parte5, "jpg",cinco);
+			  System.out.print(cd);	
+		  
+			parte6 =(BufferedImage) originalImgage.getSubimage(8050,4990,1500,2100);
+			File seis = new File("C:/test/"+dd+".jpg");
+			ImageIO.write((RenderedImage) parte6, "jpg", seis);
+              System.out.print(dd);
+            
+            parte7 =(BufferedImage) originalImgage.getSubimage(8050,7990,1500,2100);
+  			File siete = new File("C:/test/"+ed+".jpg");
+  			ImageIO.write((RenderedImage) parte7, "jpg", siete);
+                System.out.print(ed);
+                
+            parte8 =(BufferedImage) originalImgage.getSubimage(8050,10890,1500,2100);
+    	    File ocho = new File("C:/test/"+fd+".jpg");
+    		ImageIO.write((RenderedImage) parte8, "jpg", ocho);
+                System.out.print(fd);
+
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+}
+	
+	
+}
+		
+		

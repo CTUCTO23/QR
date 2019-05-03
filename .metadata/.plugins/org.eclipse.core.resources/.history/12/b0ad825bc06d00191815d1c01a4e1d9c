@@ -1,0 +1,20 @@
+package test04;
+
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+
+public class Cut {
+	
+	private BufferedImage principal;
+	private int width,height;
+	private Image parte1, parte2;
+	
+	
+
+	
+		
+		
+	
+
+
+}
